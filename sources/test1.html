@@ -1,0 +1,73 @@
+<apex:page standardController="Product2" recordSetVar="products" applyBodyTag="false" docType="html-5.0" showHeader="false" standardStylesheets="false" applyHtmlTag="false">
+<head>
+<title>Petite boutique des Carmes</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="{!URLFOR($Resource.BOUTIQUEcss)}" media="screen" type="text/css" />
+<script type="text/javascript" src="{!URLFOR($Resource.BOUTIQUEjava)}"></script>
+
+<style>
+ html {
+    background: url({!URLFOR($Resource.BOUTIQUEfonds)}) no-repeat center center fixed;
+        -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+}
+</style>
+
+</head>
+
+<body>
+<div id="site">
+    <header id="masthead">
+        <h1><a href="http://www.centrespirituel-avon.org/" title="Centre spirituel Avon" target="_blank">
+            <img src="{!URLFOR($Resource.BOUTIQUElogo)}" alt="Centre spirituel Avon" border="0" style="border:px none ; border-color:; border-style:none; border-width: px; height: auto; width: 100%; margin: 0; padding: 0;" width="100%" height="auto"></img></a>
+             <span class="tagline">Petite boutique des Carmes</span></h1>
+    </header>
+    <div id="content">
+        <div id="products">
+          <ul>
+            <apex:variable value="{!1}" var="nqty"/>
+            <apex:variable value="{!0}" var="ChqSum"/>
+          <apex:repeat var="prod" value="{!products}">
+          <apex:outputPanel layout="none" rendered="{!IF(AND(prod.IsActive,prod.Family =='Boutique'),true,false)}" >
+          <li>
+              <div class="produit">
+              <div class="product-image">
+                  <apex:outputField value="{!prod.BT_Image_prod__c}"/>
+
+              </div>
+                    <div class="produit-description">
+                        <h2 class="produit-Titre">{!HTMLENCODE(prod.Name)} </h2>
+                       <p style="text-align: justify;"> <apex:outputField value="{!prod.Description}"/></p>
+                    </div>
+              <div class="product-description" data-name="{!prod.ProductCode}" data-price="{!prod.BT_Prix__c}">
+                  <h3 class="product-name">{!HTMLENCODE(prod.Name)} <span class="product-price">&euro; {!prod.BT_Prix__c}</span></h3>
+                  <form class="add-to-cart" action="BC_cart" method="post">
+                    <table style="width:100%">
+                            <tr>
+                                <td><label for="qty-1">Quantité</label><td><input type="number" name="qty-1" id="qty-1" class="qty" value="1" /></td></td><td><input type="submit" value="Ajouter au panier" class="btn" /></td>
+                            </tr>
+                            </table>
+                  </form>
+              </div>
+              </div>
+          </li>
+          <apex:variable var="nqty" value="{!nqty + 1}"/>
+        </apex:outputPanel>
+        </apex:repeat>
+        </ul>
+        </div>
+    </div>
+    <div>
+        <p>TEST</p>
+    </div>
+
+
+
+</div>
+</body>
+</apex:page>
