@@ -1,0 +1,1247 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+	</script>
+	<title></title>
+
+	<style>
+		body {
+			/*position: relative;*/
+			font-family: 'Roboto', 'Open Sans', sans-serif;
+			font-family: "Overlock", cursive;
+			font-size: 1em;
+			font-size: 16px;
+			line-height: 1.5em;
+			font-weight: 400;
+			color: #333;
+			background-color: #fff;
+			margin: 0;
+
+		}
+
+
+
+		/*-------------*/
+
+		.xoo-wsc-basket {
+			background-color: #ededed;
+			top: 12px;
+			position: fixed;
+		}
+
+
+
+		.xoo-wsc-basket {
+			padding: 10px;
+			border-radius: 14px;
+			margin: 10px;
+			box-shadow: 0 1px 4px 0;
+			right: 0;
+			z-index: 999999;
+			cursor: pointer;
+		}
+
+
+
+		.xoo-wsc-items-count {
+			background-color: #ea8c00;
+			color: #ffffff;
+		}
+
+		.xoo-wsc-items-count {
+			border-radius: 50%;
+			left: -15px;
+			position: absolute;
+			top: -15px;
+			font-size: 13px;
+			width: 28px;
+			height: 28px;
+			line-height: 28px;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		xoo-wsc-icon-"] {
+ font-family: 'Woo-Side-Cart' !important;
+		speak: none;
+		font-style: normal;
+		font-weight: 400;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		}
+
+		.xoo-wsc-icon-basket1:before {
+			content: "\e903";
+		}
+
+		.xoo-wsc-modal.xoo-wsc-active .xoo-wsc-basket {
+			right: 300px;
+			right: 80vw;
+		}
+
+		/*---*/
+
+		.xoo-wsc-container {
+			right: -300px;
+			right: -80vw;
+			width: 300px;
+			width: 80vw;
+		}
+
+		.xoo-wsc-basket,
+		.xoo-wsc-container {
+			transition: right .5s;
+		}
+
+		.xoo-wsc-container {
+			position: fixed;
+			z-index: 999999;
+			background-color: #fff;
+			top: 0;
+			bottom: 0;
+			max-width: 90%;
+		}
+
+		.xoo-wsc-modal.xoo-wsc-active .xoo-wsc-container {
+			right: 0;
+		}
+
+		.xoo-wsc-header {
+			position: relative;
+			border-bottom: 1px solid #eee;
+			padding: 15px;
+		}
+
+		.xoo-wsc-ctxt {
+			font-size: 20px;
+		}
+
+		.xoo-wsc-close {
+			transform: translateY(-50%);
+			top: 50%;
+			right: 20px;
+		}
+
+		.xoo-wsc-close {
+			cursor: pointer;
+			position: absolute;
+		}
+
+		.xoo-wsc-body {
+			font-size: 14px;
+		}
+
+		.xoo-wsc-body {
+			overflow-y: auto;
+			position: relative;
+			overflow-x: hidden;
+		}
+
+		.xoo-wsc-content {
+			position: relative;
+			font-size: 14px;
+		}
+
+		/*-- footer --*/
+
+		.xoo-wsc-footer {
+			position: absolute;
+			bottom: 0;
+			padding: 10px;
+			box-sizing: border-box;
+			border-top: 2px solid #eee;
+		}
+
+		.xoo-wsc-footer {
+			width: 100%;
+			text-align: center;
+			/* display: block; */
+			/* margin: 1vw; */
+		}
+
+		.xoo-wsc-footer a.button {
+			/* width: 100%; */
+			text-align: center;
+			display: block;
+			margin: 1vw;
+		}
+
+		.xoo-wsc-footer-a {
+			margin-bottom: 10px;
+		}
+
+		.footer-b {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.btn-primary {
+			color: #fff;
+			background-color: #0495c9;
+			border-color: #357ebd;
+			/*set the color you want here*/
+		}
+
+		.btn-primary:hover,
+		.btn-primary:focus,
+		.btn-primary:active,
+		.btn-primary.active,
+		.open>.dropdown-toggle.btn-primary {
+			color: #fff;
+			background-color: #00b3db;
+			border-color: #285e8e;
+			/*set the color you want here*/
+		}
+
+		/*-- opaque --*/
+
+		.xoo-wsc-modal.xoo-wsc-active .xoo-wsc-opac {
+			top: 0;
+			left: 0;
+			right: 0;
+			position: fixed;
+			bottom: 0;
+			background-color: #000;
+			z-index: 99999;
+			opacity: .5;
+		}
+
+
+
+
+		/* ------------------------- */
+		.table {
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: 1rem;
+		}
+
+		.table td,
+		.table th {
+			padding: .75rem;
+			vertical-align: top;
+			border-top: 1px solid #eceeef;
+		}
+
+		.paniervide {
+			/* border: 1px dashed grey; */
+			background: rgba(226, 226, 226, 0.5);
+			margin: 5%;
+			padding: 25px;
+			text-align: center;
+		}
+
+		.lachat {
+			/* border: 1px dashed grey; */
+			background: rgba(226, 226, 226, 0.5);
+			margin: 5px;
+			padding: 5px;
+		}
+
+		.lachatp1 {
+			display: grid;
+			grid-template-columns: 3fr 1fr 2fr 1fr 1fr;
+			grid-column-gap: 10px;
+			justify-items: start;
+			align-items: center;
+
+
+			/*  display: flex;
+  flex-wrap: wrap ;
+   justify-content: space-between;
+   */
+		}
+
+		/*-- input nbr ---*/
+
+		.input-group {
+			flex-grow: 1;
+		}
+
+		.btnon {
+			text-align: right;
+		}
+
+		.input-group {
+			position: relative;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			width: 100%;
+		}
+
+		.input-group-addon:not(:last-child) {
+			border-right: 0;
+		}
+
+		.input-group-addon {
+			padding: .5rem .75rem;
+			margin-bottom: 0;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1.25;
+			color: #464a4c;
+			text-align: center;
+			background-color: #eceeef;
+			border: 1px solid rgba(0, 0, 0, .15);
+			border-radius: .25rem;
+		}
+
+
+
+
+		.input-group .form-control,
+		.input-group-addon,
+		.input-group-btn {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+
+		.input-group .form-control {
+			position: relative;
+			z-index: 2;
+			-webkit-box-flex: 1;
+			-webkit-flex: 1 1 auto;
+			-ms-flex: 1 1 auto;
+			flex: 1 1 auto;
+			width: 1%;
+			margin-bottom: 0;
+		}
+
+		.form-control {
+			display: block;
+			width: 100%;
+			padding: .5rem .75rem;
+			font-size: 1rem;
+			line-height: 1.25;
+			color: #464a4c;
+			background-color: #fff;
+			background-image: none;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box;
+			border: 1px solid rgba(0, 0, 0, .15);
+			border-radius: .25rem;
+			-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+		}
+
+		.input-group .form-control:not(:first-child):not(:last-child),
+		.input-group-addon:not(:first-child):not(:last-child),
+		.input-group-btn:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
+
+		/*-- input nbr ---*/
+
+		/*--- group nbr ---- */
+		.groupnbr {
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr;
+		}
+
+		.groupnbr .inputnbr {
+			margin: 0px !important;
+			border: 0px !important;
+			text-align: center !important;
+		}
+
+		.btnbr {
+			padding: .5rem .5rem;
+			margin-bottom: 0;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1.25;
+			color: #464a4c;
+			text-align: center;
+			background-color: #eceeef;
+			background-color: #C0C0C0;
+			border: 0px solid rgba(0, 0, 0, .15);
+			border-radius: .25rem;
+			cursor: pointer;
+		}
+
+		/*--- group nbr ---- */
+
+		.btn-danger {
+			color: #fff;
+			background-color: #d9534f;
+			border-color: #d9534f;
+		}
+
+		/* ------------------------- */
+		.vert {
+			color: green;
+		}
+
+		.card {
+			margin: 10px;
+		}
+
+		.savoirplus {
+			text-align: right;
+		}
+
+		.grille {
+			display: grid;
+			grid-template-columns: 2fr 1fr 2fr 1fr;
+			grid-template-rows: auto;
+			justify-items: center;
+			align-items: center;
+
+		}
+
+
+
+		.achat {
+			background: rgba(226, 226, 226, 0.5);
+			padding: 5px;
+			margin-bottom: 10px;
+		}
+
+		.grille input.qty {
+			width: 40px;
+			border: 1px solid #eee;
+			border: 1px solid red;
+			font: 1em 'PT Serif', serif;
+			background: #f9f9f9;
+			color: #000;
+			border-radius: 3px;
+			margin-left: 0.4em;
+			/*padding:;*/
+		}
+
+		/* ------------------------- */
+		.quantity {
+			position: relative;
+		}
+
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+
+		.quantity input {
+			width: 45px;
+			height: 42px;
+			line-height: 1.65;
+			float: left;
+			display: block;
+			padding: 0;
+			margin: 0;
+			padding-left: 20px;
+			border: 1px solid #eee;
+		}
+
+		.quantity input:focus {
+			outline: 0;
+		}
+
+		.quantity-nav {
+			float: left;
+			position: relative;
+			height: 42px;
+		}
+
+		.quantity-button {
+			position: relative;
+			cursor: pointer;
+			border-left: 1px solid #eee;
+			width: 20px;
+			text-align: center;
+			color: #333;
+			font-size: 13px;
+			font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+			line-height: 1.7;
+			-webkit-transform: translateX(-100%);
+			transform: translateX(-100%);
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+
+		.quantity-button.quantity-up {
+			position: absolute;
+			height: 50%;
+			top: 0;
+			border-bottom: 1px solid #eee;
+		}
+
+		.quantity-button.quantity-down {
+			position: absolute;
+			bottom: -1px;
+			height: 50%;
+		}
+
+		input[type=number]:not(.browser-default),
+		input[type=number] {
+			/* border: 0px solid #8842d5;
+    border-radius: 5px; */
+			background-color: white;
+		}
+
+		.material-icons.md-18 {
+			font-size: 18px;
+		}
+
+		.material-icons.md-24 {
+			font-size: 24px;
+		}
+
+		.material-icons.md-36 {
+			font-size: 36px;
+		}
+
+		.material-icons.md-48 {
+			font-size: 48px;
+		}
+
+		.activator {
+			cursor: pointer;
+		}
+
+		/*------------*/
+		.lagallerie {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: auto;
+			align-items: start;
+		}
+
+		.card .card-reveal {
+			height: 100%;
+		}
+
+        .carte {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 10px;
+  padding: 10px;
+}
+
+.carte .card-reveal {
+    padding: 24px;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    overflow-y: auto;
+    left: 0;
+    top: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+}
+
+
+		@media screen and (max-width: 1367px) {
+
+			.grille {
+				grid: auto / repeat(2, 1fr);
+
+			}
+
+			.lagallerie {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+
+			}
+
+
+		}
+
+
+		@media screen and (max-width: 992px) {
+
+			.grille {
+				grid: auto / repeat(2, 1fr);
+
+			}
+
+			.lagallerie {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto;
+
+			}
+
+
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<h1 class="header__title">Expanding Card Grid</h1>
+			<h2 class="header__subtitle">with Flexbox</h2>
+	</div>
+
+			<!-- Gallerie  -->
+			<div class="lagallerie">
+				<!-- card 1 -->
+				<div class="carte">
+					<div class="card-image waves-effect waves-block waves-light">
+						<img src="file:///media/removable/SD%20Card/PRO/Dev/pages/sf-pp/Echoppe/img/Mockup-MELF.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Marie et la France
+        <i class="material-icons right vert">unfold_more</i></span>
+        <p>Marie et la France : un livre pour rappeler le lien extraordinaire qui existe entre la Vierge Marie et notre pays.</p>
+      <!-- <p><a href="#">This is a link</a></p> -->
+      <div class="savoirplus">
+         <button type="button" class="btn lactivator">En savoir plus <i class="material-icons activator right">more_horiz</i></button>
+        <!-- <input class="btn activator" type="submit" value="En savoir plus"> -->
+
+      </div>
+
+
+    </div>
+    <!--<div class="card-action">-->
+          <!-- <a href="#">This is a link</a> -->
+    <!--      <div class="achat grille">-->
+    <!--        <p>Le livre "Marie et la france"</p>-->
+    <!--        <p>15€</p>-->
+    <!--        <div class="groupnbr">-->
+    <!--          <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>-->
+    <!--          <input type='number' class='item-count inputnbr' data-name='Le livre Marie et la france' value='0'>-->
+    <!--          <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>-->
+    <!--        </div>-->
+    <!--        <a href="#" data-name="livre Marie et la france" data-price="10" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>-->
+    <!--      </div>-->
+    <!--      <div class="achat grille">-->
+    <!--        <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>-->
+    <!--        <p>50€</p>-->
+    <!--        <div class="groupnbr">-->
+    <!--          <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>-->
+    <!--          <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>-->
+    <!--          <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>-->
+    <!--        </div>-->
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+    <!--        <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4 deactivator">Card Title<i class="material-icons right vert">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+       <div class="achat grille">
+            <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>
+            <p>50€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+            <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+    </div>
+  </div>
+
+  <!-- card 2 -->
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="file:///media/removable/SD%20Card/PRO/Dev/pages/sf-pp/Echoppe/img/Mockup-MELF.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Marie et la France
+        <i class="material-icons right vert">unfold_more</i></span>
+        <p>Marie et la France : un livre pour rappeler le lien extraordinaire qui existe entre la Vierge Marie et notre pays.</p>
+      <!-- <p><a href="#">This is a link</a></p> -->
+      <div class="savoirplus">
+        <!-- <button type="button" class="btn activator">En savoir plus [...] </button> -->
+        <!-- <input class="btn activator" type="submit" value="En savoir plus"> -->
+        <i class="material-icons activator right vert">more_horiz</i>
+      </div>
+
+
+    </div>
+    <div class="card-action">
+          <!-- <a href="#">This is a link</a> -->
+          <div class="achat grille">
+            <p>Le livre "Marie et la france"</p>
+            <p>15€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Le livre Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <a href="#" data-name="livre Marie et la france" data-price="10" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+          <div class="achat grille">
+            <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>
+            <p>50€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+            <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+        </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right vert">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+  <!-- card 3 -->
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="file:///media/removable/SD%20Card/PRO/Dev/pages/sf-pp/Echoppe/img/Mockup-MELF.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Marie et la France
+        <i class="material-icons right vert">unfold_more</i></span>
+        <p>Marie et la France : un livre pour rappeler le lien extraordinaire qui existe entre la Vierge Marie et notre pays.</p>
+      <!-- <p><a href="#">This is a link</a></p> -->
+      <div class="savoirplus">
+        <!-- <button type="button" class="btn activator">En savoir plus [...] </button> -->
+        <!-- <input class="btn activator" type="submit" value="En savoir plus"> -->
+        <i class="material-icons activator right vert">more_horiz</i>
+      </div>
+
+
+    </div>
+    <div class="card-action">
+          <!-- <a href="#">This is a link</a> -->
+          <div class="achat grille">
+            <p>Le livre "Marie et la france"</p>
+            <p>15€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Le livre Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <a href="#" data-name="livre Marie et la france" data-price="10" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+          <div class="achat grille">
+            <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>
+            <p>50€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+            <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+        </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right vert">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+  <!-- card 4 -->
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="file:///media/removable/SD%20Card/PRO/Dev/pages/sf-pp/Echoppe/img/Mockup-MELF.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Marie et la France
+        <i class="material-icons right vert">unfold_more</i></span>
+        <p>Marie et la France : un livre pour rappeler le lien extraordinaire qui existe entre la Vierge Marie et notre pays.</p>
+      <!-- <p><a href="#">This is a link</a></p> -->
+      <div class="savoirplus">
+        <!-- <button type="button" class="btn activator">En savoir plus [...] </button> -->
+        <!-- <input class="btn activator" type="submit" value="En savoir plus"> -->
+        <i class="material-icons activator right vert">more_horiz</i>
+      </div>
+
+
+    </div>
+    <div class="card-action">
+          <!-- <a href="#">This is a link</a> -->
+          <div class="achat grille">
+            <p>Le livre "Marie et la france"</p>
+            <p>15€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Le livre Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <a href="#" data-name="livre Marie et la france" data-price="10" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+          <div class="achat grille">
+            <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>
+            <p>50€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+            <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+        </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right vert">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+  <!-- card 5 -->
+  <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="file:///media/removable/SD%20Card/PRO/Dev/pages/sf-pp/Echoppe/img/Mockup-MELF.jpg" alt="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Marie et la France
+        <i class="material-icons right vert">unfold_more</i></span>
+        <p>Marie et la France : un livre pour rappeler le lien extraordinaire qui existe entre la Vierge Marie et notre pays.</p>
+      <!-- <p><a href="#">This is a link</a></p> -->
+      <div class="savoirplus">
+        <!-- <button type="button" class="btn activator">En savoir plus [...] </button> -->
+        <!-- <input class="btn activator" type="submit" value="En savoir plus"> -->
+        <i class="material-icons activator right vert">more_horiz</i>
+      </div>
+
+
+    </div>
+    <div class="card-action">
+          <!-- <a href="#">This is a link</a> -->
+          <div class="achat grille">
+            <p>Le livre "Marie et la france"</p>
+            <p>15€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Le livre Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <a href="#" data-name="livre Marie et la france" data-price="10" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+          <div class="achat grille">
+            <p>Lot de 10 livres "Marie et la france" (livraison offerte)</p>
+            <p>50€</p>
+            <div class="groupnbr">
+              <button class='bouttonnbr btnbr' data-name='-'><i class='material-icons '>remove</i></button>
+              <input type='number' class='item-count inputnbr' data-name='Lot de 10 livres Marie et la france' value='0'>
+              <button class='bouttonnbr btnbr' data-name='+'><i class='material-icons'>add</i></button>
+            </div>
+            <!-- <input type="number" class="qty" name="" value="1"> -->
+            <!-- <input class="btn" type="submit" value="Ajouter au panier"> -->
+            <a href="#" data-name="Lot de 10 livres Marie et la france" data-price="50" data-qt="2" class="add-to-cart btn btn-primary" title="ajouter au panier"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+        </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right vert">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+  </div>
+  <!-- Gallerie //   -->
+
+</div>
+
+<!--  -->
+<div class="xoo-wsc-modal">
+
+  <div class="xoo-wsc-basket clore" style="">
+    <span class="xoo-wsc-items-count">0</span>
+    <span class="xoo-wsc-icon-basket1 xoo-wsc-bki"><i class="material-icons right">shopping_cart</i></span>
+  </div>
+    <div class="xoo-wsc-opac"></div>
+    <div class="xoo-wsc-container">
+
+<div class="xoo-wsc-header">
+		<span class="xoo-wsc-ctxt">Votre panier</span>
+	<span class="xoo-wsc-icon-cross xoo-wsc-close"><i class="material-icons right clore">clear</i></span>
+</div>
+
+<div class="xoo-wsc-body" style="height: 444px;">
+
+
+	<div class="xoo-wsc-content">
+
+              <div class="paniervide">
+                <p>Votre panier est vide</p>
+
+              </div>
+              <div class="show-cart">
+
+              </div>
+
+              <!-- <table class="show-cart table"></table> -->
+        <!-- <div>Total price: $<span class="total-cart"></span><i class="material-icons">euro_symbol</i></div> -->
+
+		<div class="xoo-wsc-updating" style="display: none;">
+			<span class="xoo-wsc-icon-spinner2" aria-hidden="true"></span>
+			<span class="xoo-wsc-uopac"></span>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+	<div class="xoo-wsc-footer">
+
+
+		<div class="xoo-wsc-footer-a">
+			<div class="soustotal">
+        <p>
+          <span>Sous-total : </span> <span class="total-cart">0</span>€
+        </p>
+        <p>
+          <span>Frais de port : </span>
+          <span class="total-port">0</span>€
+				</p>
+			
+
+      </div>
+
+
+					</div>
+
+		<div class="footer-b">
+
+						<a href="#" class="button xoo-wsc-chkt btn btn-primary" >Passer la commande</a>
+
+						<a href="# " class="button btn fermer">Continuer vos achats</a>
+					</div>
+
+
+	</div>
+
+
+</div></div>
+
+<script>
+    $(document).ready(function() {
+  $( ".paniervide" ).hide();
+});
+
+$(".clore").click(function(){
+$(".xoo-wsc-modal").toggleClass("xoo-wsc-active");
+});
+
+$(".fermer").click(function(){
+$(".xoo-wsc-modal").removeClass("xoo-wsc-active");
+});
+
+$(".ouvrir").click(function(){
+$(".xoo-wsc-modal").addClass("xoo-wsc-active");
+displayCart();
+});
+
+$(".lactivator").click(function(){
+//$(".card-reveal").show();
+//$( this ).parent()
+$(this).closest('.carte').children('.card-reveal').show();
+});
+
+$(".deactivator").click(function(){
+//$(".card-reveal").show();
+//$( this ).parent()
+$(this).closest('.carte').children('.card-reveal').hide();
+});
+
+
+
+
+// ************************************************
+// Shopping Cart API
+// ************************************************
+
+var shoppingCart = (function() {
+  // =============================
+  // Private methods and propeties
+  // =============================
+  cart = [];
+
+  // Constructor
+  function Item(name, price, count) {
+    this.name = name;
+    this.price = price;
+    this.count = count;
+  }
+
+  // Save cart
+  function saveCart() {
+    sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+  }
+
+    // Load cart
+  function loadCart() {
+    cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+  }
+  if (sessionStorage.getItem("shoppingCart") != null) {
+    loadCart();
+  }
+
+
+  // =============================
+  // Public methods and propeties
+  // =============================
+  var obj = {};
+
+  // Add to cart
+  obj.addItemToCart = function(name, price, count) {
+    for(var item in cart) {
+      if(cart[item].name === name) {
+        cart[item].count = count;
+        // cart[item].count ++;
+        saveCart();
+        return;
+      }
+    }
+    var item = new Item(name, price, count);
+    cart.push(item);
+    saveCart();
+  }
+
+  obj.basketaddItemToCart = function(name, price, count) {
+    for(var item in cart) {
+      if(cart[item].name === name) {
+        cart[item].count ++;
+        saveCart();
+        return;
+      }
+    }
+    var item = new Item(name, price, count);
+    cart.push(item);
+    saveCart();
+  }
+  // Set count from item
+  obj.setCountForItem = function(name, count) {
+    for(var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count = count;
+        break;
+      }
+    }
+  };
+  // Remove item from cart
+  obj.removeItemFromCart = function(name) {
+      for(var item in cart) {
+        if(cart[item].name === name) {
+          cart[item].count --;
+          if(cart[item].count === 0) {
+            cart.splice(item, 1);
+          }
+          break;
+        }
+    }
+    saveCart();
+
+  }
+
+  // Remove all items from cart
+  obj.removeItemFromCartAll = function(name) {
+    for(var item in cart) {
+      if(cart[item].name === name) {
+        cart.splice(item, 1);
+        break;
+      }
+    }
+    saveCart();
+  }
+
+  // Clear cart
+  obj.clearCart = function() {
+    cart = [];
+    saveCart();
+  }
+
+  // Count cart
+  obj.totalCount = function() {
+    var totalCount = 0;
+    for(var item in cart) {
+      totalCount += cart[item].count;
+    }
+    return totalCount;
+  }
+
+  // Total cart
+  obj.totalCart = function() {
+    var totalCart = 0;
+    for(var item in cart) {
+      totalCart += cart[item].price * cart[item].count;
+    }
+    return Number(totalCart.toFixed(2));
+  }
+
+  // List cart
+  obj.listCart = function() {
+    var cartCopy = [];
+    for(i in cart) {
+      item = cart[i];
+      itemCopy = {};
+      for(p in item) {
+        itemCopy[p] = item[p];
+
+      }
+      itemCopy.total = Number(item.price * item.count).toFixed(2);
+      cartCopy.push(itemCopy)
+    }
+    return cartCopy;
+  }
+
+  // cart : Array
+  // Item : Object/Class
+  // addItemToCart : Function
+  // removeItemFromCart : Function
+  // removeItemFromCartAll : Function
+  // clearCart : Function
+  // countCart : Function
+  // totalCart : Function
+  // listCart : Function
+  // saveCart : Function
+  // loadCart : Function
+  return obj;
+})();
+
+
+// *****************************************
+// Triggers / Events
+// *****************************************
+// Add item
+$('.add-to-cart').click(function(event) {
+  event.preventDefault();
+  var name = $(this).data('name');
+  var price = Number($(this).data('price'));
+  var count = Number($(this).parent().find("input").val());
+  shoppingCart.addItemToCart(name, price, count);
+  displayCart();
+});
+
+// Clear items
+$('.clear-cart').click(function() {
+  shoppingCart.clearCart();
+  displayCart();
+});
+
+//-------------
+
+function displayCart() {
+  var cartArray = shoppingCart.listCart();
+  var output = "";
+  if (!cartArray || !cartArray.length) {
+    $( ".paniervide" ).show();
+    $( ".lachat" ).remove();
+    $('.xoo-wsc-items-count').html(0);
+    $('.total-cart').html(0);
+  } else {
+    $( ".paniervide" ).hide();
+  for(var i in cartArray) {
+    output += "<div class='lachat'>"
+    + "<div class='lachatp1'>"
+    + "<p>" + cartArray[i].name + "</p>"
+    + "<p>( " + cartArray[i].price + "€ )</p>"
+    + "<div class='groupnbr'><button class='minus-item btnbr' data-name='" + cartArray[i].name + "'><i class='material-icons '>remove</i></button><input type='number' class='item-count inputnbr ' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'><button class='plus-item btnbr' data-name='" + cartArray[i].name + "'><i class='material-icons'>add</i></button></div>"
+    + "" + cartArray[i].total + "€"
+    + "<div class='btnon'><button class='delete-item btn btn-danger' data-name='" + cartArray[i].name + "'><i class='material-icons'>remove_shopping_cart</i></button></div>"
+    + "</div>"
+
+    + "</div>";
+  }
+  $('.show-cart').html(output);
+  $('.total-cart').html(shoppingCart.totalCart());
+  $('.total-count').html(shoppingCart.totalCount());
+  $('.xoo-wsc-items-count').html(shoppingCart.totalCount());
+  $(".xoo-wsc-modal").addClass("xoo-wsc-active");
+    }
+}
+
+//-------------
+
+// Delete item button
+
+$('.show-cart').on("click", ".delete-item", function(event) {
+  var name = $(this).data('name')
+  shoppingCart.removeItemFromCartAll(name);
+  displayCart();
+})
+
+
+// -1
+$('.show-cart').on("click", ".minus-item", function(event) {
+  var name = $(this).data('name')
+  shoppingCart.removeItemFromCart(name);
+  displayCart();
+})
+// +1
+$('.show-cart').on("click", ".plus-item", function(event) {
+  var name = $(this).data('name')
+  shoppingCart.basketaddItemToCart(name);
+  displayCart();
+})
+
+// Item count input
+$('.show-cart').on("change", ".item-count", function(event) {
+   var name = $(this).data('name');
+   var count = Number($(this).val());
+  shoppingCart.setCountForItem(name, count);
+  displayCart();
+});
+
+//displayCart();
+
+//
+
+$(".bouttonnbr").on("click", function() {
+
+  var $button = $(this);
+  var oldValue = $button.parent().find("input").val();
+  var valeurbutton = $(this).data('name');
+
+  if (valeurbutton == "+") {
+	  var newVal = parseFloat(oldValue) + 1;
+	} else {
+   // Don't allow decrementing below zero
+    if (oldValue > 0) {
+      var newVal = parseFloat(oldValue) - 1;
+    } else {
+      newVal = 0;
+    }
+  }
+
+  $button.parent().find("input").val(newVal);
+
+
+});
+
+</script>
+
+    </body>
+</html>
